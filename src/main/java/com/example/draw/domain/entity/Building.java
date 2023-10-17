@@ -18,4 +18,7 @@ public class Building {
     private Integer attackPower;
     private Integer defencePower;
     private Integer life;
+    private Integer woodRate;
+    private Integer ironRate;
+    private Integer foodRate;
 }
