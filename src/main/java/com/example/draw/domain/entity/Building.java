@@ -18,7 +18,7 @@ public class Building {
     private Integer attackPower;
     private Integer defencePower;
     private Integer life;
-    private Integer woodRate;
+    private Integer woodRate; // todo : 수정완료
     private Integer ironRate;
     private Integer foodRate;
 }
