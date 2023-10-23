@@ -14,6 +14,7 @@ public class KafkaController {
     public String sendMessage(@RequestBody Chatmessage chatmessage) {
         System.out.println("chatmessage = " + chatmessage);
         producerService.sendMessage(chatmessage);
+
         return "success";
     }
 }
