@@ -1,5 +1,6 @@
-package com.example.draw.kafkaTest;
+package com.example.draw.domain.kafka;
 
+import com.example.draw.domain.response.DrawAnimalsResponse;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +13,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @EnableKafka
@@ -22,7 +24,7 @@ public class KafkaProducerConfig {
     private String servers;
 
     @Bean
-    public ProducerFactory<String, Chatmessage> producerFactory() {
+    public ProducerFactory<String, List<DrawAnimalsResponse>> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, servers);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +33,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Chatmessage> kafkaTemplate() {
+    public KafkaTemplate<String, List<DrawAnimalsResponse>> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

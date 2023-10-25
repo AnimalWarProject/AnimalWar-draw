@@ -36,10 +36,7 @@ public class DrawBuildingsService {
             if (pickBuilding != null) {
                 resultList.add(new DrawBuildingResponse( // List에 넣고 마지막에 보여준다.
                         pickBuilding.getName(),
-                        pickBuilding.getGrade(),
-                        pickBuilding.getAttackPower(),
-                        pickBuilding.getDefencePower(),
-                        pickBuilding.getLife()
+                        pickBuilding.getGrade()
                 ));
             }
         }
