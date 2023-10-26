@@ -1,11 +1,8 @@
 package com.example.draw.domain.response;
 
+import java.util.UUID;
+
 public record DrawAnimalsResponse(
-        String name,
-        String grade,
-        Integer attackPower,
-        Integer defencePower,
-        Integer life,
-        String type
+        String name
 ) {
 }
