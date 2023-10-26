@@ -1,5 +1,6 @@
 package com.example.draw.domain.kafka;
 
+import com.example.draw.domain.dto.SendDrawResponse;
 import com.example.draw.domain.response.DrawAnimalsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -11,10 +12,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class KafkaProducerService {
     private static final String TOPIC = "resultDraw";
-    private final KafkaTemplate<String, List<DrawAnimalsResponse>> kafkaTemplate;
+    private final KafkaTemplate<String, List<SendDrawResponse>> kafkaTemplate;
 
-    public void sendResult(List<DrawAnimalsResponse> result) {
-        System.out.println("result producer = " + result);
+    public void sendResult(List<SendDrawResponse> result) {
         kafkaTemplate.send(TOPIC, result);
     }
 

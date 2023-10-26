@@ -1,5 +1,6 @@
 package com.example.draw.domain.kafka;
 
+import com.example.draw.domain.dto.SendDrawResponse;
 import com.example.draw.domain.response.DrawAnimalsResponse;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -24,7 +25,7 @@ public class KafkaProducerConfig {
     private String servers;
 
     @Bean
-    public ProducerFactory<String, List<DrawAnimalsResponse>> producerFactory() {
+    public ProducerFactory<String, List<SendDrawResponse>> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, servers);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -33,7 +34,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, List<DrawAnimalsResponse>> kafkaTemplate() {
+    public KafkaTemplate<String, List<SendDrawResponse>> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
