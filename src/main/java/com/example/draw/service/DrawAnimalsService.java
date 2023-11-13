@@ -54,7 +54,7 @@ public class DrawAnimalsService {
                         pickAnimal.getName()));
             }
         }
-        kafkaProducerService.sendResult(sendList);  // userAnimal에 저장시키게 보내준다.
+//        kafkaProducerService.sendResult(sendList);  // userAnimal에 저장시키게 보내준다.
         return resultList;
     }
 
