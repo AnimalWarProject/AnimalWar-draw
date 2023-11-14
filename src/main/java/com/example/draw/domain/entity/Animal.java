@@ -11,12 +11,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "animals")
 public class Animal {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long animalId;
+
     private String name;
-    private String grade; // 등급 : 레어, 레전드, 유니크 등등..
+    @Enumerated(EnumType.STRING)
+    private Grade grade;
     private Integer attackPower;
     private Integer defencePower;
     private Integer life;
-    private String type; // Enum 타입으로 받을예정. 개, 고양이 등등
+    @Enumerated(EnumType.STRING)
+    private Species species;
+    private String imagePath;
 }

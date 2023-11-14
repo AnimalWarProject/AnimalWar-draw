@@ -55,7 +55,7 @@ public class DrawBuildingsService {
                         pickBuilding.getName()));
             }
         }
-//        kafkaProducerService.sendResult(sendList);  // userAnimal에 저장시키게 보내준다.
+        kafkaProducerService.sendBuildingResult(sendList);  // userBuilding에 저장시키게 보내준다.
         return resultList;
     }
 

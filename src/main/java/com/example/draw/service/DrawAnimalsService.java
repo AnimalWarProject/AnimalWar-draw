@@ -2,6 +2,7 @@ package com.example.draw.service;
 
 import com.example.draw.domain.dto.SendDrawResponse;
 import com.example.draw.domain.entity.Animal;
+import com.example.draw.domain.entity.Grade;
 import com.example.draw.domain.response.DrawAnimalsResponse;
 import com.example.draw.domain.kafka.KafkaProducerService;
 import com.example.draw.repository.DrawAnimalsRepository;
@@ -26,22 +27,22 @@ public class DrawAnimalsService {
 
         for (int i = 0; i < number; i++) {
             int x = (int)(Math.random() * 100); // ** Math.random()은 double이라서 바로 Integer형변환이 안된다. 기본형인 int로 바꿔준 후에 Integer로 바꿀수가 있다.
-            String grade = null;
+            Grade grade;
             Animal pickAnimal = null; // 초기화 설정
             if (x == 0) { // 1% 레전드
-                grade = "LEGEND";
+                grade = Grade.LEGEND;
                 pickAnimal = drawRepository.pick(grade);
             } else if (x <= 3) { // 3% 유니크
-                grade = "UNIQUE";
+                grade = Grade.UNIQUE;
                 pickAnimal = drawRepository.pick(grade);
             } else if (x <= 11) { // 8% 슈퍼레어
-                grade = "SUPERRARE";
+                grade = Grade.SUPERRARE;
                 pickAnimal = drawRepository.pick(grade);
             } else if (x <= 32) { // 21% 레어
-                grade = "RARE";
+                grade = Grade.RARE;
                 pickAnimal = drawRepository.pick(grade);
             } else if (x <= 99) { // 67% 노말
-                grade = "NORMAL";
+                grade = Grade.NORMAL;
                 pickAnimal = drawRepository.pick(grade);
             }
 
@@ -54,7 +55,7 @@ public class DrawAnimalsService {
                         pickAnimal.getName()));
             }
         }
-//        kafkaProducerService.sendResult(sendList);  // userAnimal에 저장시키게 보내준다.
+        kafkaProducerService.sendAnimalResult(sendList);  // userAnimal에 저장시키게 보내준다.
         return resultList;
     }
 
