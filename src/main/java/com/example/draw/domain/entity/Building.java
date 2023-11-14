@@ -12,13 +12,21 @@ import lombok.NoArgsConstructor;
 @Table(name = "buildings")
 public class Building {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long buildingId;
     private String name;
-    private String grade; // 등급 : 레어, 레전드, 유니크 등등..
+    private Grade grade;
     private Integer attackPower;
     private Integer defencePower;
     private Integer life;
-    private Integer woodRate; // todo : 수정완료
+    private Integer woodRate;
     private Integer ironRate;
     private Integer foodRate;
+    private String imagePath;
+
+    private BuildingType buildingType;
+
+
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "userUUID")
+//    private List<UserBuilding> userBuildings;
 }

@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/draw/")
-@CrossOrigin("*")
 public class DrawController {
 
     private final DrawAnimalsService animalsService;

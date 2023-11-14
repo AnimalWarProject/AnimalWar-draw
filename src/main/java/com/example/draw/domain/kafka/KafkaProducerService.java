@@ -11,11 +11,17 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class KafkaProducerService {
-    private static final String TOPIC = "resultDraw";
+    private static final String TOPIC = "resultAnimalDraw";
     private final KafkaTemplate<String, List<SendDrawResponse>> kafkaTemplate;
 
-    public void sendResult(List<SendDrawResponse> result) {
+    public void sendAnimalResult(List<SendDrawResponse> result) {
         kafkaTemplate.send(TOPIC, result);
+        System.out.println("동물 : " + result);
+    }
+
+    public void sendBuildingResult(List<SendDrawResponse> result) {
+        kafkaTemplate.send("resultBuildingDraw", result);
+        System.out.println("건물 : " + result);
     }
 
 }
