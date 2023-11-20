@@ -20,6 +20,7 @@ public class DrawController {
 
     @PostMapping("/animal") //  1번뽑을건지 10번 뽑을건지 입력받는다.
     public List<DrawAnimalsResponse> animalPick(@RequestBody DrawRequest request){
+        System.out.println(request.userUUID() + "유저 uuid");
         return animalsService.pick(request.cnt(), request.userUUID());
     }
 
