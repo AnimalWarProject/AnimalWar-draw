@@ -3,6 +3,7 @@ package com.example.draw.service;
 import com.example.draw.domain.dto.SendDrawResponse;
 import com.example.draw.domain.entity.Animal;
 import com.example.draw.domain.entity.Building;
+import com.example.draw.domain.entity.Grade;
 import com.example.draw.domain.kafka.KafkaProducerService;
 import com.example.draw.domain.response.DrawAnimalsResponse;
 import com.example.draw.domain.response.DrawBuildingResponse;
@@ -27,22 +28,22 @@ public class DrawBuildingsService {
 
         for (int i = 0; i < number; i++) {
             int x = (int)(Math.random() * 100); // ** Math.random()은 double이라서 바로 Integer형변환이 안된다. 기본형인 int로 바꿔준 후에 Integer로 바꿀수가 있다.
-            String grade = null;
+            Grade grade;
             Building pickBuilding = null; // 초기화 설정
             if (x == 0) { // 1% 레전드
-                grade = "LEGEND";
+                grade = Grade.LEGEND;
                 pickBuilding = drawBuildingsRepository.pick(grade);
             } else if (x <= 3) { // 3% 유니크
-                grade = "UNIQUE";
+                grade = Grade.UNIQUE;
                 pickBuilding = drawBuildingsRepository.pick(grade);
             } else if (x <= 11) { // 8% 슈퍼레어
-                grade = "SUPERRARE";
+                grade = Grade.SUPERRARE;
                 pickBuilding = drawBuildingsRepository.pick(grade);
             } else if (x <= 32) { // 21% 레어
-                grade = "RARE";
+                grade = Grade.RARE;
                 pickBuilding = drawBuildingsRepository.pick(grade);
             } else if (x <= 99) { // 67% 노말
-                grade = "NORMAL";
+                grade = Grade.NORMAL;
                 pickBuilding = drawBuildingsRepository.pick(grade);
             }
 
