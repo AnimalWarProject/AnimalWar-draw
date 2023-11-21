@@ -52,7 +52,9 @@ public class DrawAnimalsService {
                         userUUID
                 ));
                 resultList.add(new DrawAnimalsResponse( // List에 넣고 마지막에 보여준다.
-                        pickAnimal.getName()));
+                        pickAnimal.getName(),
+                        pickAnimal.getSpecies(),
+                        pickAnimal.getImagePath()));
             }
         }
         kafkaProducerService.sendAnimalResult(sendList);  // userAnimal에 저장시키게 보내준다.

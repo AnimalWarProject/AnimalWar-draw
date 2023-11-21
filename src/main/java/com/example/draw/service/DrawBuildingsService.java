@@ -22,6 +22,7 @@ public class DrawBuildingsService {
     private final KafkaProducerService kafkaProducerService;
 
     public List<DrawBuildingResponse> pick(int number, UUID userUUID) { // 1 or 10 뽑는 횟수
+        int type = 1;
 
         List<SendDrawResponse> sendList = new ArrayList<>();
         List<DrawBuildingResponse> resultList = new ArrayList<>();// 리스트 선언 보여줄때 1개 혹은 10개를 보여줘야 해서
@@ -52,8 +53,11 @@ public class DrawBuildingsService {
                         pickBuilding.getName(),
                         userUUID
                 ));
+
                 resultList.add(new DrawBuildingResponse( // List에 넣고 마지막에 보여준다.
-                        pickBuilding.getName()));
+                        pickBuilding.getName(),
+                        type,
+                        pickBuilding.getImagePath()));
             }
         }
         kafkaProducerService.sendBuildingResult(sendList);  // userBuilding에 저장시키게 보내준다.
