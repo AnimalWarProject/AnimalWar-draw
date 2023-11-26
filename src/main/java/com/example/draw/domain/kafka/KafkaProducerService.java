@@ -16,12 +16,10 @@ public class KafkaProducerService {
 
     public void sendAnimalResult(List<SendDrawResponse> result) {
         kafkaTemplate.send(TOPIC, result);
-        System.out.println("동물 : " + result);
     }
 
     public void sendBuildingResult(List<SendDrawResponse> result) {
         kafkaTemplate.send("resultBuildingDraw", result);
-        System.out.println("건물 : " + result);
     }
 
 }
