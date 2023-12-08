@@ -20,13 +20,10 @@ public class AnimalService {
 
     @Bean
     public ResponseEntity<String> saveAnimals() {
-        // buildingRepository 비어 있으면 저장
         if (!animalRepository.findAll().isEmpty()) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Data already exists");
         }
-
-        // 데이터 저장 로직 추가 (이 부분은 생략된 것으로 가정)
 
         // animalRepository가 비어 있을 때만 저장
         if (animalRepository.findAll().isEmpty()) {

@@ -11,7 +11,4 @@ public class SendDrawResponse {
     private String name;
     private UUID userUUID;
 
-    public SendDrawResponse() {
-        // 기본 생성자
-    }
 }

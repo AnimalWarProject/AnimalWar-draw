@@ -20,7 +20,7 @@ public class BuildingService {
 
     @Bean
     public ResponseEntity<String> saveBuildings() {
-        // buildingRepository 비어 있으면 저장
+
         if(!buildingRepository.findAll().isEmpty()) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body("Data already exists");
