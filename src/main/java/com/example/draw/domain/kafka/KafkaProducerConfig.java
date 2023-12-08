@@ -1,7 +1,6 @@
 package com.example.draw.domain.kafka;
 
 import com.example.draw.domain.dto.SendDrawResponse;
-import com.example.draw.domain.response.DrawAnimalsResponse;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

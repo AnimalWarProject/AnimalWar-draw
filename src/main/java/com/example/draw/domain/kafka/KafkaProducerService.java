@@ -1,7 +1,6 @@
 package com.example.draw.domain.kafka;
 
 import com.example.draw.domain.dto.SendDrawResponse;
-import com.example.draw.domain.response.DrawAnimalsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
